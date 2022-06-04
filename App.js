@@ -65,6 +65,7 @@ const App = () => {
     } else {
     }
   };
+  // sss
   return (
     <View style={styles.container}>
       <StatusBar animated={true} backgroundColor="#111" />
