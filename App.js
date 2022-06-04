@@ -1,96 +1,140 @@
-import React, {useState} from 'react';
 import {
-  Text,
   View,
+  Text,
   StyleSheet,
-  StatusBar,
-  Button,
+  SafeAreaView,
   Image,
-  TextInput,
+  TouchableOpacity,
+  ImageBackground,
+  BackHandler,
+  Dimensions,
+  ScrollView,
 } from 'react-native';
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 24,
-    backgroundColor: '#fff',
-  },
-  LoginContainer: {
-    marginTop: 50,
-    color: '#000',
-    // borderWidth: 1,
-    justifyContent: 'space-around',
-    flexDirection: 'row',
-  },
-  LoginFlex: {
-    width: 120,
-  },
-  TextContainer: {
-    color: '#000',
-  },
-  textTitile: {
-    marginTop: 20,
-    marginBottom: 5,
-    color: '#111',
-    fontSize: 18,
-  },
-  inputText: {
-    color: '#000',
-    borderWidth: 1,
-    borderColor: 'dodgerblue',
-    paddingVertical: 5,
-    paddingHorizontal: 5,
-    borderRadius: 5,
-  },
-  title: {
-    paddingHorizontal: 12,
-    paddingVertical: 8,
-  },
-  logoContainer: {
-    marginTop: 70,
-    alignItems: 'center',
-  },
-  logo: {
-    width: 100,
-    height: 100,
-    borderRadius: 50,
-  },
-});
+import React from 'react';
 
 const App = () => {
-  // const [text1, setText1] = useState('');
-  const [text, setText] = useState('');
-  const handlePress = () => {
-    if (text) {
-      alert(`Tasdiqlash linki ${text} emailga yuborildi`);
-    } else {
-    }
-  };
-  // sss
   return (
     <View style={styles.container}>
-      <StatusBar animated={true} backgroundColor="#111" />
-      <View style={styles.logoContainer}>
-        <Image source={require('./1.jpg')} style={styles.logo} />
+      <SafeAreaView>
+        <View style={styles.header}>
+          <Image
+            source={require('./image/shareit.png')}
+            style={styles.imageSh}
+          />
+          <View style={{flexDirection: 'row', alignItems: 'center'}}>
+            <TouchableOpacity style={{marginHorizontal: 20}}>
+              <Image
+                style={styles.bellImage}
+                source={require('./image/bell.png')}
+              />
+            </TouchableOpacity>
+            <TouchableOpacity>
+              <View style={styles.plusImage}>
+                <Image
+                  style={styles.plus}
+                  source={require('./image/plus.png')}
+                />
+              </View>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </SafeAreaView>
+      <View style={styles.flexOne}>
+        <View style={styles.sendFileContainer}>
+          <Image
+            style={styles.imageSend}
+            source={require('./image/senImage.png')}
+          />
+        </View>
+        <View style={styles.sendFileText}>
+          <Image
+            style={styles.imageText}
+            source={require('./image/footerText.png')}
+          />
+        </View>
+        <ScrollView>
+          <View style={{alignItems: 'center'}}>
+            <Image
+              style={styles.imageScroll}
+              source={require('./image/scroll.png')}
+            />
+            <Image
+              style={styles.imageScroll}
+              source={require('./image/scroll.png')}
+            />
+          </View>
+        </ScrollView>
       </View>
-      <View style={styles.TextContainer}>
-        <Text style={styles.textTitile}>User:</Text>
-        <TextInput style={styles.inputText} placeholder="User" />
-        <Text style={styles.textTitile}>Email:</Text>
-        <TextInput
-          onChangeText={e => setText(e)}
-          style={styles.inputText}
-          placeholder="Email"
+      <View style={{alignItems: 'center', paddingVertical: 10}}>
+        <Image
+          style={{width: '80%', height: 50}}
+          source={require('./image/footerTab.png')}
         />
-      </View>
-      <View style={styles.LoginContainer}>
-        <View style={styles.LoginFlex}>
-          <Button style={styles.title} title="Log in" />
-        </View>
-        <View style={styles.LoginFlex}>
-          <Button style={styles.title} onPress={handlePress} title="Sig up" />
-        </View>
       </View>
     </View>
   );
 };
+
 export default App;
+const windowWidth = Dimensions.get('window').width;
+const windowHeight = Dimensions.get('window').height;
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: '#fcfcfc',
+    flex: 1,
+  },
+  header: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginHorizontal: 20,
+    marginVertical: 15,
+  },
+  bellImage: {
+    width: 30,
+    height: 30,
+  },
+  plusImage: {
+    width: 27,
+    height: 27,
+    borderWidth: 2,
+    borderRadius: 30,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  plus: {
+    width: 25,
+    height: 25,
+  },
+  imageSh: {
+    width: 110,
+    height: 30,
+  },
+  flexOne: {
+    flex: 1,
+  },
+  senAllContainer: {},
+  sendFileContainer: {
+    alignItems: 'center',
+    marginTop: 20,
+    marginBottom: 10,
+  },
+  sendFileText: {
+    alignItems: 'center',
+    marginBottom: 10,
+  },
+  imageSend: {
+    width: '70%',
+    height: 80,
+  },
+  imageText: {
+    width: '90%',
+    height: 30,
+  },
+  imageScroll: {
+    width: '90%',
+    height: windowHeight / 2.3,
+    // width: '90%',
+    // height: windowHeight/ 2.4
+  },
+});
